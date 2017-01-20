@@ -14,6 +14,10 @@ gulp.src([
     .pipe(autoprefixer({
         browsers: ['last 2 versions']
     }))
-    // todo: minify CSS
-    //.pipe()
+    // minify CSS
+    .pipe(cssnano({
+        discardComments: {
+            removeAll: true
+        }
+    }))
     .pipe(gulp.dest('dist/optimised/'));

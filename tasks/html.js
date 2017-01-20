@@ -4,6 +4,10 @@ const htmlmin = require('gulp-htmlmin'); // docs: https://github.com/jonschlinke
 const baseDir = 'src/optimised/';
 
 gulp.src(baseDir + '**/*.html')
-    // todo: minify HTML
-    //.pipe()
+    // minify HTML
+    .pipe(htmlmin({
+        collapseWhitespace: true,
+        removeComments: true,
+        removeAttributeQuotes: true
+    }))
     .pipe(gulp.dest('dist/optimised/'));
