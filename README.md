@@ -1,14 +1,14 @@
 # Minify HTML, CSS, JS
 
-## Exercise
-
-* Change [tasks/html.js](tasks/html.js) to minify HTML.
-* Change [tasks/styles.js](tasks/styles.js) to minify CSS.
-* Change [tasks/scripts.js](tasks/scripts.js) to minify JS.
-
 ## Solution
 
-See [01-minify-solution](https://github.com/voorhoede/front-end-performance-masterclass/tree/01-minify-solution).
+* [Minify HTML solution](https://github.com/voorhoede/front-end-performance-masterclass/commit/6e7cd4ac4ea6999ac981efb088165fcd0697cbf5#diff-12c0fbab7a902721d672ea3b74a44690).
+* [Minify CSS solution](https://github.com/voorhoede/front-end-performance-masterclass/commit/6e7cd4ac4ea6999ac981efb088165fcd0697cbf5#diff-ab1efe7ea49655a8523e554f5732e15a).
+* [Minify JS solution](https://github.com/voorhoede/front-end-performance-masterclass/commit/6e7cd4ac4ea6999ac981efb088165fcd0697cbf5#diff-4d5803cdb7bfcf2fd62016ff3d1399fb).
+
+## Exercise
+
+See [01-minify-exercise](https://github.com/voorhoede/front-end-performance-masterclass/tree/01-minify-exercise).
 
 ---
 
