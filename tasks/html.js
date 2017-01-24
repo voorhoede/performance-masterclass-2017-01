@@ -8,6 +8,7 @@ gulp.src(baseDir + '**/*.html')
     .pipe(htmlmin({
         collapseWhitespace: true,
         removeComments: true,
-        removeAttributeQuotes: true
+        removeAttributeQuotes: true,
+        minifyCSS: true
     }))
     .pipe(gulp.dest('dist/optimised/'));
