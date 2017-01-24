@@ -1,19 +1,10 @@
-# Use dynamic compression
+# Precompression - Bonus
 
-## Solution
+* Configure shrink-ray to only compress HTML in [server-optimised.js](server-optimised.js).
+* Pre-compress all static files using [tasks/compress.js](tasks/compress.js) (use with `npm run compress`).
+* Use custom middleware [lib/use-compressed.js](lib/use-compressed.js) to serve the optimal - brotli or gzip - precompressed file in [server-optimised.js](server-optimised.js).
 
-* Set `brotli` `quality` to 4. (is default shrink-ray)
-* Set `zlib` `level` to 6. (is default shrink-ray)
-* Enable `etag`s by setting `app.set('etag', true)`
-* Enable caching by unsetting `cache` and `cacheSize` options.
-* Let shrink-ray decide which files to compress by unsetting `filter` option.
-
-See [overview of all changes](https://github.com/voorhoede/front-end-performance-masterclass/commit/cb751dc53afe9dc5f2ed3335129a2617c48204d5).
-
-
-## Exercise
-
-See [11-dynamic-compression-exercise](https://github.com/voorhoede/front-end-performance-masterclass/tree/11-dynamic-compression-exercise).
+See [overview of all changes](https://github.com/voorhoede/front-end-performance-masterclass/commit/d680434666278cccae11a8653b67b2512592644b).
 
 ---
 
