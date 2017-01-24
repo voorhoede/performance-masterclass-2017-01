@@ -1,3 +1,4 @@
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
 # Front-end Performance Masterclass
 
 ## Quick start
@@ -51,3 +52,22 @@ server-optimised.js   <-- serves `dist/optimised/` on `localhost:3004`.
 
 Solutions are linked from each individual exercise.
 
+=======
+# Use dynamic compression
+
+## Exercise
+
+* Configure the `brotli` `quality` in [server-optimised.js](server-optimised.js) for fastest response time and test in Chrome.
+* Configure the `zlib` (gzip) `level` in [server-optimised.js](server-optimised.js) for the fastest response time and test in Safari.
+
+Compare "waiting" (time to first byte) and "content download" times for different `quality`/`level` and different network conditions (throttling).
+
+
+## Solution
+
+See [11-dynamic-compression-solution](https://github.com/voorhoede/front-end-performance-masterclass/tree/11-dynamic-compression-solution).
+
+---
+
+Return to [Front-end Performance Masterclass](https://github.com/voorhoede/front-end-performance-masterclass).
+>>>>>>> 11-dynamic-compression-exercise

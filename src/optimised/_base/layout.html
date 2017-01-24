@@ -1,19 +1,55 @@
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
 <!DOCTYPE html>
 <html lang="en">
 <head>
     {% include './app-meta.html' %}
 
     <link href="/index.css" rel="stylesheet">
+=======
+{% set latestCssLoaded = (cssLoaded and cssLoaded == '/index.css') %}
+
+<!DOCTYPE html>
+{% if not fontsLoaded %}
+<html lang="en">
+{% else %}
+<html lang="en" class="fonts-loaded">
+{% endif %}
+<head>
+    {% include './app-meta.html' %}
+
+    {% if not latestCssLoaded or not fontsLoaded %}
+    <script data-cookie-helper>
+        {% include "assets/js/vendor/cookie.min.js" %}
+    </script>
+    {% endif %}
+
+    <script defer src="/index.js"></script>
+
+    {% if forceRepeatView or latestCssLoaded %}
+    <link href="/index.css" rel="stylesheet">
+    {% else %}
+        {% include './load-css.html' %}
+    {% endif %}
+
+    {% if not fontsLoaded %}
+        {% include './load-fonts.html' %}
+    {% endif %}
+>>>>>>> 11-dynamic-compression-exercise
 
     {% block head_extra %}{% endblock %}
 </head>
 
 <body {% block body_attributes %}{% endblock %}>
 
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
     {% block body %}{% endblock %}
 
     <script src="/assets/js/vendor/jquery.min.js"></script>
     <script src="/index.js"></script>
     {% block scripts_extra %}{% endblock %}
+=======
+{% block body %}{% endblock %}
+{% block scripts_extra %}{% endblock %}
+>>>>>>> 11-dynamic-compression-exercise
 </body>
 </html>
