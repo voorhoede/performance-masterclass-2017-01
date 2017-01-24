@@ -32,6 +32,7 @@ nunjucks.configure(baseDir, {
 });
 app.get('*', (req, res, next) => {
     res.render(path.join('./', req.url, 'index.html'), {
+        cssLoaded: req.cookies.fullCssLoaded,
         fontsLoaded: req.cookies.fontsLoaded
     });
 });

@@ -1,3 +1,5 @@
+{% set latestCssLoaded = (cssLoaded and cssLoaded == '/index.css') %}
+
 <!DOCTYPE html>
 {% if not fontsLoaded %}
 <html lang="en">
@@ -7,15 +9,22 @@
 <head>
     {% include './app-meta.html' %}
 
-    <script defer src="/index.js"></script>
-
-    {% include './load-css.html' %}
-
-    {% if not fontsLoaded %}
+    {% if not latestCssLoaded or not fontsLoaded %}
     <script data-cookie-helper>
         {% include "assets/js/vendor/cookie.min.js" %}
     </script>
-    {% include './load-fonts.html' %}
+    {% endif %}
+
+    <script defer src="/index.js"></script>
+
+    {% if latestCssLoaded %}
+    <link href="/index.css" rel="stylesheet">
+    {% else %}
+        {% include './load-css.html' %}
+    {% endif %}
+
+    {% if not fontsLoaded %}
+        {% include './load-fonts.html' %}
     {% endif %}
 
     {% block head_extra %}{% endblock %}
