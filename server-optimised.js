@@ -10,22 +10,21 @@ const app = express();
 const baseDir = 'dist/optimised';
 const port = process.env.PORT || 3004;
 
-app.set('etag', false);
+app.set('etag', true);
 app.use((req, res, next) => { res.removeHeader('X-Powered-By'); next(); });
 app.use(cookieParser());
 
 app.use(shrinkRay({
-    // disable caching of compressed files to get consistent responses during development
-    cache: () => false,
-    cacheSize: false,
-    // compress all the things
-    filter: () => true,
-    // todo: find the optimal quality/level
+    // enable caching so shrink-ray can create a maximum compressed version in the background
+    //cache: () => false,
+    //cacheSize: false,
+    // disable filter so shrink-ray can decide which files should be compressed
+    //filter: () => true,
     brotli: {
-        quality: 1 // between 1 and 11
+        quality: 4 // between 1 and 11
     },
     zlib: {
-        level: 1 // between 1 and 9
+        level: 6 // between 1 and 9
     }
 }));
 
