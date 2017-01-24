@@ -14,10 +14,10 @@ app.use((req, res, next) => { res.removeHeader('X-Powered-By'); next(); });
 app.use((req, res, next) => {
     // only set caching header on hashed files
     const hashPattern = /.*-[0-9a-f]{10}\..*/;
-    const isHashedFilename = true; // todo: change condition using hashPattern
+    const isHashedFilename = hashPattern.test(req.url);
     if (isHashedFilename) {
         const oneYear = 365 * 24 * 60 * 60;
-        res.setHeader('Cache-Control', 'max-age=' + oneYear);
+        res.setHeader('Cache-Control', 'max-age=' + oneYear + ', immutable');
     }
     next();
 });
