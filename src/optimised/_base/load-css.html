@@ -1,0 +1,19 @@
+<noscript><link href="/index.css" rel="stylesheet"></noscript>
+<script data-load-css>
+    {% include "assets/js/vendor/loadcss.min.js" %}
+    {% include "assets/js/vendor/onloadcss.min.js" %}
+
+    (function(window) {
+        var stylesheet = window.loadCSS( '/index.css' );
+        window.onloadCSS( stylesheet, function() {
+            console.log( 'Stylesheet has loaded.' );
+            cookie('fullCssLoaded', '/index.css', 365);
+        });
+    }(window));
+</script>
+
+<!-- htmlmin:ignore -->
+<style data-critical-css>
+{% include name + 'critical.css' %}
+</style>
+<!-- htmlmin:ignore -->

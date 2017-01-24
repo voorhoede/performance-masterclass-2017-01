@@ -1,0 +1,38 @@
+{% set latestCssLoaded = (cssLoaded and cssLoaded == '/index.css') %}
+
+<!DOCTYPE html>
+{% if not fontsLoaded %}
+<html lang="en">
+{% else %}
+<html lang="en" class="fonts-loaded">
+{% endif %}
+<head>
+    {% include './app-meta.html' %}
+
+    {% if not latestCssLoaded or not fontsLoaded %}
+    <script data-cookie-helper>
+        {% include "assets/js/vendor/cookie.min.js" %}
+    </script>
+    {% endif %}
+
+    <script defer src="/index.js"></script>
+
+    {% if forceRepeatView or latestCssLoaded %}
+    <link href="/index.css" rel="stylesheet">
+    {% else %}
+        {% include './load-css.html' %}
+    {% endif %}
+
+    {% if not fontsLoaded %}
+        {% include './load-fonts.html' %}
+    {% endif %}
+
+    {% block head_extra %}{% endblock %}
+</head>
+
+<body {% block body_attributes %}{% endblock %}>
+
+{% block body %}{% endblock %}
+{% block scripts_extra %}{% endblock %}
+</body>
+</html>
