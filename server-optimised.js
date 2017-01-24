@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const nunjucks = require('nunjucks');
 const path = require('path');
 const routeStatic = require('./lib/route-static');
@@ -10,6 +11,7 @@ const port = process.env.PORT || 3004;
 
 app.set('etag', false);
 app.use((req, res, next) => { res.removeHeader('X-Powered-By'); next(); });
+app.use(cookieParser());
 
 // static routes
 app.use(routeStatic);
@@ -29,7 +31,9 @@ nunjucks.configure(baseDir, {
     watch: true
 });
 app.get('*', (req, res, next) => {
-    res.render(path.join('./', req.url, 'index.html'), {});
+    res.render(path.join('./', req.url, 'index.html'), {
+        fontsLoaded: req.cookies.fontsLoaded
+    });
 });
 
 app.listen(port, (err) => {
