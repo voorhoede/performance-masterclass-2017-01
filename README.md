@@ -1,16 +1,19 @@
 # Use dynamic compression
 
-## Exercise
-
-* Configure the `brotli` `quality` in [server-optimised.js](server-optimised.js) for fastest response time and test in Chrome.
-* Configure the `zlib` (gzip) `level` in [server-optimised.js](server-optimised.js) for the fastest response time and test in Safari.
-
-Compare "waiting" (time to first byte) and "content download" times for different `quality`/`level` and different network conditions (throttling).
-
-
 ## Solution
 
-See [11-dynamic-compression-solution](https://github.com/voorhoede/front-end-performance-masterclass/tree/11-dynamic-compression-solution).
+* Set `brotli` `quality` to 4. (is default shrink-ray)
+* Set `zlib` `level` to 6. (is default shrink-ray)
+* Enable `etag`s by setting `app.set('etag', true)`
+* Enable caching by unsetting `cache` and `cacheSize` options.
+* Let shrink-ray decide which files to compress by unsetting `filter` option.
+
+See [overview of all changes](https://github.com/voorhoede/front-end-performance-masterclass/commit/cb751dc53afe9dc5f2ed3335129a2617c48204d5).
+
+
+## Exercise
+
+See [11-dynamic-compression-exercise](https://github.com/voorhoede/front-end-performance-masterclass/tree/11-dynamic-compression-exercise).
 
 ---
 
