@@ -1,9 +1,14 @@
-# Load CSS async
+# Load CSS async - Bonus
 
 ## Solution
 
-* Change [_base/load-css.html](src/optimised/_base/load-css.html) to [load `/index.css` async for JS user-agents using `loadCSS`](https://github.com/voorhoede/front-end-performance-masterclass/commit/8d695afd3ce5951a640d5a339fdacd15675bf276#diff-a92f0909500724db2cc19dfbd78c096cR4).
-* Change [_base/load-css.html](src/optimised/_base/load-css.html) to [load `/index.css` blocking for non-JS user-agents](https://github.com/voorhoede/front-end-performance-masterclass/commit/8d695afd3ce5951a640d5a339fdacd15675bf276#diff-a92f0909500724db2cc19dfbd78c096cR1).
+* Include [assets/js/vendor/cookie.min.js](src/optimised/assets/js/vendor/cookie.min.js) helper in [_base/layout.html](src/optimised/_base/layout.html).
+* Set `fullCssLoaded` cookie to `'/index.css'` on `onloadCSS` in [_base/load-css](src/optimised/_base/load-css.html).
+* Pass `fullCssLoaded` cookie to template in [server-optimised.js](server-optimised.js).
+* Load `index.css` blocking if cookie matches current stylesheet name (`latestCssLoaded` is true) in [_base/layout.html](src/optimised/_base/layout.html).
+* Load `index.css` async if cookie does not match current stylesheet name, by including `load-css.html` in [_base/layout.html](src/optimised/_base/layout.html).
+
+See [overview of all changes](https://github.com/voorhoede/front-end-performance-masterclass/commit/2a1c4ab944d458159bed77355ac6b6d651e49f17).
 
 
 ## Exercise
