@@ -12,7 +12,8 @@ app.set('etag', false);
 app.use((req, res, next) => { res.removeHeader('X-Powered-By'); next(); });
 
 app.use((req, res, next) => {
-    // todo: set cache header to 1 year
+    const oneYear = 365 * 24 * 60 * 60;
+    res.setHeader('Cache-Control', 'max-age=' + oneYear);
     next();
 });
 
