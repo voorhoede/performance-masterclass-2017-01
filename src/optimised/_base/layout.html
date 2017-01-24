@@ -7,6 +7,8 @@
 <head>
     {% include './app-meta.html' %}
 
+    <script defer src="/index.js"></script>
+
     <link href="/index.css" rel="stylesheet">
 
     {% if not fontsLoaded %}
@@ -22,9 +24,6 @@
 <body {% block body_attributes %}{% endblock %}>
 
 {% block body %}{% endblock %}
-
-<script src="/assets/js/vendor/jquery.min.js"></script>
-<script src="/index.js"></script>
 {% block scripts_extra %}{% endblock %}
 </body>
 </html>

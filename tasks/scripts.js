@@ -5,6 +5,7 @@ const uglify = require('gulp-uglify'); // docs: https://www.npmjs.com/package/gu
 const baseDir = 'src/optimised/';
 
 gulp.src([
+        baseDir + '/assets/js/vendor/jquery.min.js',
         baseDir + '/dist/js/bootstrap.js',
         baseDir + '/assets/js/docs.min.js',
         baseDir + '/assets/js/ie10-viewport-bug-workaround.js'
