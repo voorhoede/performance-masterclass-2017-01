@@ -1,5 +1,5 @@
-sudo: false
 dist: trusty
+sudo: false
 
 language: node_js
 node_js:
@@ -10,5 +10,6 @@ install:
   - npm install --global now
 
 after_success:
-  - now --public --no-clipboard --alias masterclass-$TRAVIS_PULL_REQUEST --token $NOW_TOKEN
-  - node node_modules/lighthouse-ci/runlighthouse.js https://masterclass-$TRAVIS_PULL_REQUEST.now.sh
+  - NOW_URL=$(now deploy --public --name performance-masterclass --token $NOW_TOKEN | egrep -o 'https?://[^ ]+')
+  - node node_modules/lighthouse-ci/runlighthouse.js $NOW_URL
+  - now remove -y --token $NOW_TOKEN $NOW_URL
