@@ -1,20 +1,16 @@
+sudo: false
 dist: trusty
-sudo: required
 
 language: node_js
 node_js:
   - 8
-
-before_install:
-  - sudo apt install -y xsel
 
 install:
   - npm install
   - npm install --global now
 
 after_success:
-  - now deploy --public --token $NOW_TOKEN
-  - NOW_URL=$(xsel --clipboard)
+  - NOW_URL=$(now deploy --public --token $NOW_TOKEN | egrep -o 'https?://[^ ]+')
   - echo $NOW_URL
   - node node_modules/lighthouse-ci/runlighthouse.js $NOW_URL
   - now rm --token $NOW_TOKEN $NOW_URL
