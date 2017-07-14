@@ -1,0 +1,15 @@
+dist: trusty
+sudo: false
+
+language: node_js
+node_js:
+  - 8
+
+install:
+  - npm install
+  - npm install --global now
+
+after_success:
+  - NOW_URL=$(now deploy --public --name performance-masterclass --token $NOW_TOKEN | egrep -o 'https?://[^ ]+')
+  - node node_modules/lighthouse-ci/runlighthouse.js $NOW_URL
+  - now remove -y --token $NOW_TOKEN $NOW_URL

@@ -1,18 +1,53 @@
 const express = require('express');
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
+=======
+const cookieParser = require('cookie-parser');
+>>>>>>> 11-dynamic-compression-exercise
 const nunjucks = require('nunjucks');
 const path = require('path');
 const routeStatic = require('./lib/route-static');
 const redirectIndices = require('./lib/redirect-indices');
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
+=======
+const shrinkRay = require('shrink-ray');
+>>>>>>> 11-dynamic-compression-exercise
 
 const app = express();
 const baseDir = 'dist/optimised';
 const port = process.env.PORT || 3004;
 
-app.set('etag', false);
+app.set('etag', true);
 app.use((req, res, next) => { res.removeHeader('X-Powered-By'); next(); });
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
 
 // static routes
 app.use(routeStatic);
+=======
+app.use(cookieParser());
+
+app.use(shrinkRay({
+    // enable caching so shrink-ray can create a maximum compressed version in the background
+    //cache: () => false,
+    //cacheSize: false,
+    // disable filter so shrink-ray can decide which files should be compressed
+    //filter: () => true,
+    brotli: {
+        quality: 4 // between 1 and 11
+    },
+    zlib: {
+        level: 6 // between 1 and 9
+    }
+}));
+
+// static routes
+app.use(routeStatic);
+app.use('/static', (req, res, next) => {
+    // simply cache all static files, simpler for development
+    const oneYear = 365 * 24 * 60 * 60;
+    res.setHeader('Cache-Control', 'max-age=' + oneYear + ', immutable');
+    next();
+});
+>>>>>>> 11-dynamic-compression-exercise
 app.use('/static', express.static(path.join(__dirname, baseDir), { etag: false, lastModified: false }));
 
 // dynamic pages
@@ -23,10 +58,22 @@ nunjucks.configure(baseDir, {
     watch: true
 });
 app.get('*', (req, res, next) => {
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
     res.render(path.join('./', req.url, 'index.html'), {});
+=======
+    res.render(path.join('./', req.url, 'index.html'), {
+        cssLoaded: req.cookies.fullCssLoaded,
+        fontsLoaded: req.cookies.fontsLoaded,
+        name: req.url.substr(1)
+    });
+>>>>>>> 11-dynamic-compression-exercise
 });
 
 app.listen(port, (err) => {
     err ? console.error(err) : console.log(`optimised app running on http://localhost:${port}`);
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
 });
 
+=======
+});
+>>>>>>> 11-dynamic-compression-exercise

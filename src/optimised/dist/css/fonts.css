@@ -1,35 +1,65 @@
 html {
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
+=======
+    font-family: sans-serif;
+}
+
+html.fonts-loaded {
+>>>>>>> 11-dynamic-compression-exercise
     font-family: 'source_sans_pro', sans-serif;
 }
 
 @font-face {
     font-family: 'source_sans_pro';
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
     src: url('/dist/fonts/sourcesanspro-it.woff2') format('woff2'),
     url('/dist/fonts/sourcesanspro-it.woff') format('woff');
+=======
+    src: url('/dist/fonts/sourcesanspro-it-subsetted.woff2') format('woff2'),
+    url('/dist/fonts/sourcesanspro-it-subsetted.woff') format('woff');
+>>>>>>> 11-dynamic-compression-exercise
     font-weight: 400;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'source_sans_pro';
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
     src: url('/dist/fonts/sourcesanspro-light.woff2') format('woff2'),
     url('/dist/fonts/sourcesanspro-light.woff') format('woff');
+=======
+    src: url('/dist/fonts/sourcesanspro-light-subsetted.woff2') format('woff2'),
+    url('/dist/fonts/sourcesanspro-light-subsetted.woff') format('woff');
+>>>>>>> 11-dynamic-compression-exercise
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'source_sans_pro';
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
     src: url('/dist/fonts/sourcesanspro-lightit.woff2') format('woff2'),
     url('/dist/fonts/sourcesanspro-lightit.woff') format('woff');
+=======
+    src: url('/dist/fonts/sourcesanspro-lightit-subsetted.woff2') format('woff2'),
+    url('/dist/fonts/sourcesanspro-lightit-subsetted.woff') format('woff');
+>>>>>>> 11-dynamic-compression-exercise
     font-weight: 300;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'source_sans_pro';
+<<<<<<< e439bd28434ced780bf366f7892dec0c85c680c7
     src: url('/dist/fonts/sourcesanspro-regular.woff2') format('woff2'),
     url('/dist/fonts/sourcesanspro-regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
+=======
+    src: url('/dist/fonts/sourcesanspro-regular-subsetted.woff2') format('woff2'),
+    url('/dist/fonts/sourcesanspro-regular-subsetted.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+>>>>>>> 11-dynamic-compression-exercise
